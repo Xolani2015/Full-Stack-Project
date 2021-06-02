@@ -70,6 +70,21 @@ def update_tweet(id):
     db.session.commit()
     return tweet_schema.jsonify(tweet)
 
+    
+@app.route('/delete/<id>/', methods = ['DELETE'])
+def tweet_delete(id):
+    tweet = Tweets.query.get(id)
+    db.session.delete(tweet)
+    db.session.commit()
+
+    return tweet_schema.jsonify(tweet)
+
+
+
+
+
+
+
          
 
 
