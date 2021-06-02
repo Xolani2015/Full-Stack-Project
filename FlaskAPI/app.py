@@ -2,9 +2,10 @@ from flask import Flask, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
 import datetime
 from flask_marshmallow import Marshmallow
-
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:''@localhost/flask'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -35,7 +36,7 @@ tweets_schema = TweetSchema(many=True)
 
 
 @app.route('/get', methods = ['GET'])
-def get_articles():
+def get_tweets():
     all_tweets = Tweets.query.all()
     results = tweets_schema.dump(all_tweets)
     return jsonify(results)

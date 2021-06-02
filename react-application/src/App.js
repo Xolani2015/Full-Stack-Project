@@ -1,23 +1,41 @@
-import logo from './logo.svg';
+
 import './App.css';
 
+import {useState, useEffect} from "react";
+
+
 function App() {
+
+  const [tweets, setTweets] = useState([])
+
+  useEffect(() => {
+        fetch('http://127.0.0.1:5000/get', {
+          'method' : 'GET',
+          headers: {
+            'Content-Type':'application/json'
+          }
+        })
+        .then(resp=> resp.json())
+        .then(resp => setTweets(resp))
+        .catch(error => console.log(error))
+
+  }, [])
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+         <h1>Hamba Twitter Sentiments</h1>
+         {tweets.map(tweet => {
+             return(
+               <div key = {tweet.id}>
+             
+                 <h2>{tweet.tweetuser}</h2>
+                 <p>{tweet.tweettext}</p>
+                 <p>{tweet.tweetdate}</p>
+                 <p>{tweet.tweetsentiment}</p>
+                 </div>
+             )
+         })}
     </div>
   );
 }
