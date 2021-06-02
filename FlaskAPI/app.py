@@ -41,6 +41,12 @@ def get_articles():
     return jsonify(results)
 
 
+@app.route('/get/<id>/', methods = ['GET'])
+def post_details(id):
+    tweet = Tweets.query.get(id)
+    return tweet_schema.jsonify(tweet)
+
+
 @app.route('/save', methods = ['POST'])
 def save_tweet():
     tweettext = request.json['tweettext']
