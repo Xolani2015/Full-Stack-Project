@@ -59,7 +59,16 @@ def save_tweet():
     return tweet_schema.jsonify(tweets)
 
 
+@app.route('/update/<id>/', methods = ['PUT'])
+def update_tweet(id):
+    tweet = Tweets.query.get(id)
 
+    tweetsentiment = request.json['tweetsentiment']
+
+    tweet.tweetsentiment = tweetsentiment
+
+    db.session.commit()
+    return tweet_schema.jsonify(tweet)
 
          
 
