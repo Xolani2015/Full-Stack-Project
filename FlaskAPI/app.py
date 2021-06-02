@@ -34,9 +34,11 @@ tweet_schema = TweetSchema()
 tweets_schema = TweetSchema(many=True)
 
 
-@app.route('/', methods = ['GET'])
+@app.route('/get', methods = ['GET'])
 def get_articles():
-    return jsonify({"Hello" : "Hamba"})
+    all_tweets = Tweets.query.all()
+    results = tweets_schema.dump(all_tweets)
+    return jsonify(results)
 
 
 @app.route('/save', methods = ['POST'])
