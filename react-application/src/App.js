@@ -2,6 +2,7 @@
 import './App.css';
 
 import {useState, useEffect} from "react";
+import Tweetlist from './components/Tweetlist';
 
 
 function App() {
@@ -25,19 +26,8 @@ function App() {
   return (
     <div className="App">
          <h1>Hamba Twitter Sentiments</h1>
-         {tweets.map(tweet => {
-             return(
-               <div key = {tweet.id}>
-             
-                 <h2>{tweet.tweetuser}</h2>
-                 <p>{tweet.tweettext}</p>
-                 <p>{tweet.tweetdate}</p>
-                 <p>{tweet.tweetsentiment}</p>
-                 </div>
-             )
-         })}
+           <Tweetlist tweets = {tweets}/>
     </div>
   );
 }
-
 export default App;

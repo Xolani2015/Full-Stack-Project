@@ -29,7 +29,6 @@ class Tweets(db.Model):
 class TweetSchema(ma.Schema):
     class Meta:
         fields = ('id', 'tweettext', 'tweetuser', 'tweetdate', 'tweetsentiment')
-
     
 tweet_schema = TweetSchema()
 tweets_schema = TweetSchema(many=True)
