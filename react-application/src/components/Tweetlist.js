@@ -3,6 +3,10 @@
 import React from 'react'
 
 function Tweetlist(props) {
+
+  const updateTweet = (tweet) => {
+     props.updateTweet(tweet)
+  }
     return (
         <div>
             
@@ -16,7 +20,9 @@ function Tweetlist(props) {
   
                 <div className = "row">
                   <div className = "col-md-1">
-                    <button className = "btn btn-primary">Update</button>
+                    <button className = "btn btn-primary"
+                    onClick = {() => updateTweet(tweet)}
+                    >Update</button>
                   </div>
                  
                  <div className = "col">

@@ -3,11 +3,13 @@ import './App.css';
 
 import {useState, useEffect} from "react";
 import Tweetlist from './components/Tweetlist';
+import Form from './components/Form';
 
 
 function App() {
 
   const [tweets, setTweets] = useState([])
+  const [updatedTweet, setUpdatedTweet] = useState(null)
 
   useEffect(() => {
         fetch('http://127.0.0.1:5000/get', {
@@ -22,11 +24,21 @@ function App() {
 
   }, [])
 
+const updateTweet = (tweet) => {
+ 
+  setUpdatedTweet(tweet)
+}
+
+
 
   return (
     <div className="App">
          <h1>Hamba Twitter Sentiments</h1>
-           <Tweetlist tweets = {tweets}/>
+         <hr/>
+         <hr/>
+           <Tweetlist tweets = {tweets} updateTweet = {updateTweet}/>
+           {updatedTweet ? <Form tweet = {updatedTweet}/> : null}
+           
     </div>
   );
 }
