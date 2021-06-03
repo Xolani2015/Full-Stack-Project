@@ -80,13 +80,5 @@ def tweet_delete(id):
     return tweet_schema.jsonify(tweet)
 
 
-
-
-
-
-
-         
-
-
 if __name__ == "__main__":
     app.run(debug=True)
