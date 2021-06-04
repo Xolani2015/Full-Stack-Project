@@ -11,8 +11,8 @@ export default class APIService{
     }
 
     static InsertTweet(body){
-        return    fetch(`http://127.0.0.1:5000/update/${id}/`, {
-            'method' : 'PUT',
+        return    fetch(`http://127.0.0.1:5000/add`, {
+            'method' : 'POST',
             headers: {
               'Content-Type':'application/json'
             },

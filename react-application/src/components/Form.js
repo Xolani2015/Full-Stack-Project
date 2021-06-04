@@ -16,7 +16,9 @@ function Form(props)
     }
 
     const insertTweet = () => {
-        
+        APIService.InsertTweet({tweetsentiment})
+        .then(resp=> console.log(resp))
+        .catch(error => console.log(error))
     }
 
     return (
