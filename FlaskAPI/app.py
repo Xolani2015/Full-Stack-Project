@@ -49,8 +49,8 @@ def post_details(id):
 
 @app.route('/add', methods = ['POST'])
 def save_tweet():
-    tweettext = "request.json['tweettext']"
-    tweetuser = "request.json['tweetuser']"
+    tweettext = request.json['tweettext']
+    tweetuser = request.json['tweetuser']
     tweetsentiment = request.json['tweetsentiment']
 
     tweets = Tweets(tweettext, tweetuser, tweetsentiment)
