@@ -4,6 +4,7 @@ import APIService from '../components/APIService';
 function Form(props) 
 {
     const [tweetsentiment, setTweetsentiment] = useState(props.tweet.tweetsentiment)
+    
 
     useEffect(() => {
         setTweetsentiment(props.tweet.tweetsentiment)
@@ -15,10 +16,6 @@ function Form(props)
          .catch(error=> console.log(error))
     }
 
-    const insertTweet = () => {
-        
-    }
-
     return (
         <div>
            {props.tweet ? (
@@ -28,27 +25,13 @@ function Form(props)
                   value = {tweetsentiment}
                   placeholder = "Please Enter New Sentiment"
                   onChange = {(e) => setTweetsentiment(e.target.value)}
-                  />
-
-                 {
-                     props.tweet.id ?  <button 
-                     onClick = {updateTweet}
-                     className = "btn btn-success mt-3">
-                     Update API</button>
-                     :
-                     <button 
-                  onClick = {insertTweet}
+                  />         
+                  <button 
+                  onClick = {updateTweet}
                   className = "btn btn-success mt-3">
-                  Add Tweet</button> 
-                 } 
-
-                 
-
+                  Update API</button>
            </div>
            ):null}
-           
-         
-
            </div> 
     )
 }
