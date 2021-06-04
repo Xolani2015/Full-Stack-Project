@@ -29,6 +29,17 @@ const updateTweet = (tweet) => {
   setUpdatedTweet(tweet)
 }
 
+const updatedData = (tweet) => {
+  const new_tweet = tweets.map(my_tweet => {
+    if(my_tweet.id === tweet.id) {
+      return tweet
+    } else {
+      return my_tweet
+    }
+  })
+  setTweets(new_tweet)
+}
+
 
 
   return (
@@ -37,7 +48,7 @@ const updateTweet = (tweet) => {
          <hr/>
          <hr/>
            <Tweetlist tweets = {tweets} updateTweet = {updateTweet}/>
-           {updatedTweet ? <Form tweet = {updatedTweet}/> : null}
+           {updatedTweet ? <Form tweet = {updatedTweet} updatedData = {updatedData} /> : null}
            
     </div>
   );
