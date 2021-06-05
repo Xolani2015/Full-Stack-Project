@@ -5,6 +5,7 @@ import {useState, useEffect} from "react";
 import Tweetlist from './components/Tweetlist';
 import Form from './components/Form';
 import AddForm from './components/AddForm';
+import APIService from './components/APIService';
 
 
 function App() {
@@ -44,8 +45,15 @@ const updatedData = (tweet) => {
   setTweets(new_tweet)
 }
 
+
+
 const openForm = () => {
   setUpdatedTweet({tweetsentiment: ''})
+}
+
+const addedTweet = (tweet) => {
+  const new_tweets = [...tweets, tweet]
+  setTweets(new_tweets)
 }
 
 
@@ -69,8 +77,8 @@ const openForm = () => {
 
          <hr/>
            <Tweetlist tweets = {tweets} updateTweet = {updateTweet}/>
-           {updatedTweet ? <Form tweet = {updatedTweet} updatedData = {updatedData} /> : null}
-           
+           {updatedTweet ? <Form tweet = {updatedTweet} updatedData = {updatedData}  addedTweet = {addedTweet}/> : null}
+           {updatedTweet ? <AddForm tweet = {updatedTweet} updatedData = {updatedData} /> : null}
     </div>
   );
 }

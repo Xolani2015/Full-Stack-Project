@@ -17,9 +17,9 @@ function Form(props)
          .catch(error=> console.log(error))
     }
 
-    const insertTweet = () => {
-        APIService.InsertTweet({tweetsentiment,tweetuser,tweettext })
-        .then(resp=> console.log(resp))
+    const addTweet = () => {
+        APIService.AddTweet({tweetsentiment,tweetuser,tweettext })
+        .then(resp=> props.addedTweet(resp))
         .catch(error => console.log(error))
     }
 
@@ -88,7 +88,7 @@ function Form(props)
                      :
                      
                      <button 
-                  onClick = {insertTweet}
+                  onClick = {addTweet}
                   className = "btn btn-success mt-3">
                   Add Tweet</button> 
                  } 
